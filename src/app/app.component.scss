@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  main {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+  
+  // etc
+    
+  main {
+    background: coral;
+  }
+  
+  footer {
+    padding: 2rem;
+    text-align: center;
+  }

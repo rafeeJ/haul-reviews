@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <span>Haul Reviewer</span>
+  <span class="spacer"></span>
+  <div *ngIf="auth.user$ | async; then authenticated else guest">
+    <!-- template will replace this div -->
+  </div>
+</mat-toolbar>
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+  <button mat-raised-button color="primary" (click)="auth.googleSignin()">
+    <i class="fa fa-google"></i>Login</button>
+
+</ng-template>
+
+
+<!-- User logged in -->
+<ng-template #authenticated>
+  <div *ngIf="auth.user$ | async as user">
+    <span class="spacer"></span>
+    <button mat-raised-button color="primary" (click)="auth.signOut()">Logout</button>
+  </div>
+</ng-template>
