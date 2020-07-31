@@ -13,6 +13,6 @@
 <ng-template #authenticated>
   <div *ngIf="auth.user$ | async as user">
     <h1>yello, {{ user.displayName }}</h1>
-    <span class="spacer"></span>
-</div>
+    <button mat-raised-button color="primary" [routerLink]="['/createHaul']">Create a haul</button>
+    </div>
 </ng-template>
