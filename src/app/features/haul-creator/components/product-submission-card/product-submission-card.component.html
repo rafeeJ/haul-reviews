@@ -1,0 +1,15 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        
+        <mat-panel-title>
+            <mat-form-field floatLabel="never" class="product-url">
+                <input matInput [formControl]="taobaoLinkControl" placeholder="Product URL">
+                <mat-error *ngIf="taobaoLinkControl.hasError('pattern')">
+                    Please enter a valid TaoBao URL
+                  </mat-error>
+            </mat-form-field>
+        </mat-panel-title>
+
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+</mat-expansion-panel>

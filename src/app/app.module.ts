@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,10 +13,17 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule }  from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+
+
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
+import { ProductSubmissionCardComponent } from './features/haul-creator/components/product-submission-card/product-submission-card.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuhaMWFpZhM55INDUD_rDRJ0TLNcIfg98",
@@ -28,7 +36,6 @@ const firebaseConfig = {
   measurementId: "G-3BM7GPLHMV"
 };
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +43,8 @@ const firebaseConfig = {
     BottomBarComponent,
     HomePageComponent,
     ProfilePageComponent,
-    HaulCreatorComponent
+    HaulCreatorComponent,
+    ProductSubmissionCardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,12 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule // auth
