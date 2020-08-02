@@ -19,6 +19,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule }  from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
@@ -56,6 +59,9 @@ const firebaseConfig = {
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
