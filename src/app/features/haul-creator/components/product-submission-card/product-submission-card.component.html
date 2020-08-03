@@ -5,26 +5,21 @@
             Please enter a valid TaoBao URL
         </mat-error>
     </mat-form-field>
-    
-    <div *ngIf="taobaoLinkControl.hasError('pattern') else validURL">
 
-    </div>
-</mat-card>
-
-<ng-template #validURL>
-    <mat-divider></mat-divider>
-    <mat-grid-list cols="3" rowHeight="1:0.75">
-        <mat-grid-tile>
-            <form>
+    <!-- Only display form when the user has entered a valid URL -->
+    <div *ngIf="!taobaoLinkControl.hasError('pattern') && !taobaoLinkControl.hasError('required')">
+        <mat-divider></mat-divider>
+        <form>
+            <div id="column">
                 <mat-form-field appearance="fill">
-                    <mat-label>size</mat-label>
+                    <mat-label>Size</mat-label>
                     <mat-select>
                         <mat-option value="option">Option</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
-                    <mat-label>colour</mat-label>
+                    <mat-label>Colour</mat-label>
                     <mat-select>
                         <mat-option value="option">Option</mat-option>
                     </mat-select>
@@ -37,30 +32,27 @@
                 <mat-form-field floatLabel="never" class="product-price">
                     <input matInput placeholder="Product price">
                 </mat-form-field>
-            </form>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-form-field class="product comment">
-                <mat-label>Leave a comment</mat-label>
-                <textarea matInput placeholder="Ex. Important things about the product"></textarea>
-            </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <form>
+            </div>
+            <div id="column">
                 <mat-form-field floatLabel="never" class="inhand-url">
-                    <input matInput placeholder="imgur url">
+                    <input matInput placeholder="Inhand Imgur URL">
                 </mat-form-field>
                 <br>
                 <mat-form-field floatLabel="never" class="inspection-url">
-                    <input matInput placeholder="imgur url">
+                    <input matInput placeholder="Inspection Imgur URL">
                 </mat-form-field>
                 <br>
                 <mat-slide-toggle>recommended</mat-slide-toggle>
-            </form>
-        </mat-grid-tile>
-    </mat-grid-list>
-
-</ng-template>
+            </div>
+            <div id="column">
+                <mat-form-field class="product comment">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Ex. Important things about the product"></textarea>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</mat-card>
 
 <!-- <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
@@ -76,7 +68,7 @@
 
     </mat-expansion-panel-header>
     <mat-grid-list cols="3" rowHeight="1:0.75">
-        <mat-grid-tile>
+       </?mat-grid-tile>
             <form>
             <mat-form-field appearance="fill">
                 <mat-label>size</mat-label>
@@ -100,14 +92,14 @@
                 <input matInput placeholder="Product price">
             </mat-form-field>
         </form>
-        </mat-grid-tile>
-        <mat-grid-tile>
+        </?mat-grid-tile> 
+         </?mat-grid-tile> 
             <mat-form-field class="product comment">
                 <mat-label>Leave a comment</mat-label>
                 <textarea matInput placeholder="Ex. Important things about the product"></textarea>
               </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
+         </?mat-grid-tile> 
+         </?mat-grid-tile> 
             <form>
             <mat-form-field floatLabel="never" class="inhand-url">
                 <input matInput placeholder="imgur url">
@@ -119,7 +111,7 @@
             <br>
             <mat-slide-toggle>recommended</mat-slide-toggle>
         </form>
-        </mat-grid-tile>
+        </?mat-grid-tile>
     </mat-grid-list>
     <p>{{ title }}</p>
     <button mat-raised-button (click)="submit()" color="primary">submit</button>

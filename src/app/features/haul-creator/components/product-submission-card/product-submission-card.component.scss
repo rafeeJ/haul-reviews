@@ -1,7 +1,10 @@
-form { 
-    width: 100%;
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 16px;
 }
 
-button {
-    float: right;
+#column {
+    flex-grow: 1;
 }

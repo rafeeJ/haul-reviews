@@ -11,14 +11,17 @@ export class ProductSubmissionCardComponent implements OnInit {
 
   constructor() { }
 
+  public title: string
+
   taobaoLinkControl = new FormControl('', [
-    Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/)
+    Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/),
+    Validators.required
   ]);
 
   ngOnInit(): void {
   }
 
-  public title: string
+  
 
   submit() {
     
