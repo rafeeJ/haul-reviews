@@ -11,12 +11,26 @@ export class ProductSubmissionCardComponent implements OnInit {
 
   constructor() { }
 
-  public title: string
+  public title: string;
+  public validURL: boolean = false;
 
   taobaoLinkControl = new FormControl('', [
-    Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/),
+    //Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/),
+    Validators.pattern(/.+(taobao|tmall)\.com.*(id=\S+)/),
     Validators.required
   ]);
+
+  validateURL(URL: string) {
+    if(this.taobaoLinkControl.hasError('required')) {
+      console.log("enter a URL please");
+      this.validURL = false;
+    } else if(this.taobaoLinkControl.hasError('pattern')) {
+      console.log("enter a valid taobao URL");
+      this.validURL = false;
+    } else if(!this.taobaoLinkControl.hasError('required') && !this.taobaoLinkControl.hasError('pattern')){
+      this.validURL = true;
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -24,21 +38,6 @@ export class ProductSubmissionCardComponent implements OnInit {
   
 
   submit() {
-    
-  }
-
-  onLostFocus() {
-    if(this.taobaoLinkControl.hasError('pattern')) {
-      console.log("Please enter valid URL");
-      this.title = "VALID URL PLEASE"
-    } else {
-      this.title = "Thanks bitch"
-      //  1. Check if the product is in db
-      //  if(db): return product
-      //  else: invoke GCP script to parse 
-      //  store product in db
-      //  return product
-    }
     
   }
 

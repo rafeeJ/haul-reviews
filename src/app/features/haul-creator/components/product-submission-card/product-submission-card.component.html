@@ -1,13 +1,14 @@
 <mat-card>
     <mat-form-field floatLabel="never" class="product-url">
-        <input matInput (focusout)="onLostFocus()" [formControl]="taobaoLinkControl" placeholder="Product URL">
+        <input #productUrl matInput (blur)="validateURL(productUrl.value)" (keyup.enter)="validateURL(productUrl.value)" [formControl]="taobaoLinkControl" placeholder="Product URL">
         <mat-error *ngIf="taobaoLinkControl.hasError('pattern')">
             Please enter a valid TaoBao URL
         </mat-error>
     </mat-form-field>
+    <button mat-raised-button (click)="validateURL(productUrl.value)" color="primary">Validate</button>
 
     <!-- Only display form when the user has entered a valid URL -->
-    <div *ngIf="!taobaoLinkControl.hasError('pattern') && !taobaoLinkControl.hasError('required')">
+    <div *ngIf="validURL">
         <mat-divider></mat-divider>
         <form>
             <div id="column">
