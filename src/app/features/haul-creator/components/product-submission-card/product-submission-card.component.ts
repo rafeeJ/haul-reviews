@@ -20,6 +20,10 @@ export class ProductSubmissionCardComponent implements OnInit {
 
   public title: string
 
+  submit() {
+    
+  }
+
   onLostFocus() {
     if(this.taobaoLinkControl.hasError('pattern')) {
       console.log("Please enter valid URL");
