@@ -33,9 +33,8 @@ export class ProductSubmissionCardComponent implements OnInit {
     } else if(!this.taobaoLinkControl.hasError('required') && !this.taobaoLinkControl.hasError('pattern')){
       this.validURL = true;
       this.api.getItemFromID(Number(URL.match(/(?<=id=)\d{5,}/)[0]))
-       .subscribe(results => {
-         console.log(results);
-         this.product = results
+       .subscribe(response => {
+        this.product = response
        })
     }
   }

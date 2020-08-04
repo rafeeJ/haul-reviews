@@ -6,6 +6,7 @@
         </mat-error>
     </mat-form-field>
     <button mat-raised-button (click)="validateURL(productUrl.value)" color="primary">Validate</button>
+    <br>
     {{product?.title}}
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="validURL">
@@ -15,14 +16,14 @@
                 <mat-form-field *ngIf="product?.sizes" appearance="fill">
                     <mat-label>Size</mat-label>
                     <mat-select>
-                        <mat-option *ngFor="let size of product.sizes" value="option">{{size}}</mat-option>
+                        <mat-option *ngFor="let size of product.sizes" [value]="size">{{size}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>
                 <mat-form-field *ngIf="product?.colours" appearance="fill">
                     <mat-label>Colour</mat-label>
                     <mat-select>
-                        <mat-option *ngFor="let colour of product.colours" value="option">{{colour}}</mat-option>
+                        <mat-option *ngFor="let colour of product.colours" [value]="colour">{{colour}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>
@@ -54,66 +55,3 @@
         </form>
     </div>
 </mat-card>
-
-<!-- <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-
-        <mat-panel-title>
-            <mat-form-field floatLabel="never" class="product-url">
-                <input matInput (focusout)="onLostFocus()" [formControl]="taobaoLinkControl" placeholder="Product URL">
-                <mat-error *ngIf="taobaoLinkControl.hasError('pattern')">
-                    Please enter a valid TaoBao URL
-                </mat-error>
-            </mat-form-field>
-        </mat-panel-title>
-
-    </mat-expansion-panel-header>
-    <mat-grid-list cols="3" rowHeight="1:0.75">
-       </?mat-grid-tile>
-            <form>
-            <mat-form-field appearance="fill">
-                <mat-label>size</mat-label>
-                <mat-select>
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill">
-                <mat-label>colour</mat-label>
-                <mat-select>
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field floatLabel="never" class="product-weight">
-                <input matInput placeholder="Product weight">
-            </mat-form-field>
-            <br>
-            <mat-form-field floatLabel="never" class="product-price">
-                <input matInput placeholder="Product price">
-            </mat-form-field>
-        </form>
-        </?mat-grid-tile> 
-         </?mat-grid-tile> 
-            <mat-form-field class="product comment">
-                <mat-label>Leave a comment</mat-label>
-                <textarea matInput placeholder="Ex. Important things about the product"></textarea>
-              </mat-form-field>
-         </?mat-grid-tile> 
-         </?mat-grid-tile> 
-            <form>
-            <mat-form-field floatLabel="never" class="inhand-url">
-                <input matInput placeholder="imgur url">
-            </mat-form-field>
-            <br>
-            <mat-form-field floatLabel="never" class="inspection-url">
-                <input matInput placeholder="imgur url">
-            </mat-form-field>
-            <br>
-            <mat-slide-toggle>recommended</mat-slide-toggle>
-        </form>
-        </?mat-grid-tile>
-    </mat-grid-list>
-    <p>{{ title }}</p>
-    <button mat-raised-button (click)="submit()" color="primary">submit</button>
-</mat-expansion-panel> -->
