@@ -1,8 +1,8 @@
 export interface Product {
-    URL: string, //  User inputted
+    URL?: string, //  User inputted
     title: string, //  Parsed from website 
-    sizeOptions: Array<string>, //  Parsed from website 
-    colourOptions: Array<string> // Parsed from website 
+    sizes: Array<string>, //  Parsed from website 
+    colours: Array<string> // Parsed from website 
 }
 
 export interface ProductSubmission extends Product{

@@ -6,23 +6,23 @@
         </mat-error>
     </mat-form-field>
     <button mat-raised-button (click)="validateURL(productUrl.value)" color="primary">Validate</button>
-
+    {{product?.title}}
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="validURL">
         <mat-divider></mat-divider>
         <form>
             <div id="column">
-                <mat-form-field appearance="fill">
+                <mat-form-field *ngIf="product?.sizes" appearance="fill">
                     <mat-label>Size</mat-label>
                     <mat-select>
-                        <mat-option value="option">Option</mat-option>
+                        <mat-option *ngFor="let size of product.sizes" value="option">{{size}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>
-                <mat-form-field appearance="fill">
+                <mat-form-field *ngIf="product?.colours" appearance="fill">
                     <mat-label>Colour</mat-label>
                     <mat-select>
-                        <mat-option value="option">Option</mat-option>
+                        <mat-option *ngFor="let colour of product.colours" value="option">{{colour}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>

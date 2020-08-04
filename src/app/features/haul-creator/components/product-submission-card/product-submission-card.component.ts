@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api/api.service';
+import { Product } from 'src/app/models/product';
 
 
 @Component({
@@ -9,11 +11,12 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ProductSubmissionCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   public title: string;
   public validURL: boolean = false;
-
+  public product: Product;
+  
   taobaoLinkControl = new FormControl('', [
     //Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/),
     Validators.pattern(/.+(taobao|tmall)\.com.*(id=\S+)/),
@@ -29,6 +32,11 @@ export class ProductSubmissionCardComponent implements OnInit {
       this.validURL = false;
     } else if(!this.taobaoLinkControl.hasError('required') && !this.taobaoLinkControl.hasError('pattern')){
       this.validURL = true;
+      this.api.getItemFromID(Number(URL.match(/(?<=id=)\d{5,}/)[0]))
+       .subscribe(results => {
+         console.log(results);
+         this.product = results
+       })
     }
   }
 
