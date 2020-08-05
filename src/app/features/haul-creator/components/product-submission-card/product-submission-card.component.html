@@ -11,6 +11,7 @@
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="validURL">
         <mat-divider></mat-divider>
+        <mat-spinner></mat-spinner>
         <form>
             <div id="column">
                 <mat-form-field *ngIf="product?.sizes" appearance="fill">

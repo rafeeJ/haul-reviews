@@ -20,11 +20,15 @@ export class ApiService {
     `${environment.apiURL}TaoBao_Parser?id=${id}`, 
     { reportProgress: true });
 
-    return this.http.request(request).pipe(
-      map(event => this.getEventMessage(event)),
-      tap(message => this.showProgress(message)),
-      last()
-    )
+    //  Returns an observable<httpevent>
+    return this.http.request(request)
+    //.pipe(
+      // For each httpevent, call the getEventMessage() function
+      //map(event => this.getEventMessage(event)),
+      
+      //tap(message => this.showProgress(message))
+      //last()
+    //)
     //return this.http.get<Product>(`${environment.apiURL}TaoBao_Parser?id=${id}`)
   }
 
