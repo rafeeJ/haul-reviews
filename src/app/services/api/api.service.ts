@@ -32,9 +32,9 @@ export class ApiService {
     //return this.http.get<Product>(`${environment.apiURL}TaoBao_Parser?id=${id}`)
   }
 
-  showProgress(message) {
-    console.log(message)
-  }
+  // showProgress(message) {
+  //   console.log(message)
+  // }
 
   private getEventMessage(event: HttpEvent<any>) {
     switch (event.type) {
