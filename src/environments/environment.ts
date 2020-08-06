@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: "https://europe-west2-haul-reviewer-rj.cloudfunctions.net/"
+  apiURL: "http://localhost:8080/api/"
 };
 
 /*

@@ -11,6 +11,6 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getItemFromID(id: number) {
-    return this.http.get<Product>(`${environment.apiURL}TaoBao_Parser?id=${id}`)
+    return this.http.get<Product>(`${environment.apiURL}url/taobao/${id}`)
   }
 }

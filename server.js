@@ -31,37 +31,39 @@ app.get('/api/url/taobao/:id', function (req, res) {
   axios.get(url, { responseType: 'arraybuffer' })
     .then((response) => {
       data = iconv.decode(response.data, 'gbk')
-      
-      let colours = []
-      let sizes = []
-      
+
       // Instantiate cheerio
       let $ = cheerio.load(data);
 
       // Get the title
       let title = $('h3', '#J_Title').text().trim()
+      result["title"] = title
     
       // Check if the colour list element exists, and if it does, push to the colours array.
-      let coloursHTML = $('.J_Prop_Color')
+      //let coloursHTML = $('.J_Prop_Color')
+      let coloursHTML = $('li > a > span', '.J_Prop_Color')
       if(coloursHTML) {
-        $('li > a > span', '.J_Prop_Color').each(function(i, ele) {
+        let colours = []
+        coloursHTML.each(function(i, ele) {
           colours.push($(this).text())
         })
+        if(!colours.length == 0) {
+          result["colours"] = colours
+        }
       }
 
       // Check if the sizes list element exists, and if it does, push to the sizes array.
       let sizesHTML = $('li > a > span', '.J_Prop_measurement')
       if(sizesHTML) {
+        let sizes = []
         sizesHTML.each(function(i, ele) {
           sizes.push($(this).text())
         })
+        if(!sizes.length == 0) {
+          result["sizes"] = sizes
+        }
       }
       
-      // Add the fields to the object and return as part of the response.
-      result["title"] = title
-      result["colours"] = colours
-      result["sizes"] = sizes
-
       res.send(result)
     })
 });

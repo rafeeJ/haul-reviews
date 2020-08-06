@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Product } from 'src/app/models/product';
 
@@ -11,11 +11,25 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductSubmissionCardComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  @Input() productID: number;
+  public product: Product;
+
+  constructor(private api: ApiService) {
+  }
+
+  productForm = new FormGroup({
+    productSize: new FormControl(''),
+    productColour: new FormControl(''),
+    productPrice: new FormControl(''),
+    productWeight: new FormControl(''),
+    productComment: new FormControl(''),
+    productInspection: new FormControl(''),
+    productPhoto: new FormControl(''),
+    productRecommend: new FormControl(''),
+  })
 
   public title: string;
   public validURL: boolean = false;
-  public product: Product;
   
   taobaoLinkControl = new FormControl('', [
     //Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/),
@@ -40,12 +54,15 @@ export class ProductSubmissionCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.api.getItemFromID(this.productID).subscribe(response => {
+      this.product = response
+    })
   }
 
   
 
-  submit() {
-    
+  onSubmit() {
+    console.log(this.productForm.value)
   }
 
 }

@@ -1,57 +1,50 @@
-<mat-card>
-    <mat-form-field floatLabel="never" class="product-url">
-        <input #productUrl matInput (blur)="validateURL(productUrl.value)" (keyup.enter)="validateURL(productUrl.value)" [formControl]="taobaoLinkControl" placeholder="Product URL">
-        <mat-error *ngIf="taobaoLinkControl.hasError('pattern')">
-            Please enter a valid TaoBao URL
-        </mat-error>
-    </mat-form-field>
-    <button mat-raised-button (click)="validateURL(productUrl.value)" color="primary">Validate</button>
-    <br>
-    {{product?.title}}
+<mat-card>    
     <!-- Only display form when the user has entered a valid URL -->
-    <div *ngIf="validURL">
+    <div *ngIf="product">
+        {{product?.title}}
         <mat-divider></mat-divider>
-        <form>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <div id="column">
                 <mat-form-field *ngIf="product?.sizes" appearance="fill">
                     <mat-label>Size</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="productSize">
                         <mat-option *ngFor="let size of product.sizes" [value]="size">{{size}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>
                 <mat-form-field *ngIf="product?.colours" appearance="fill">
                     <mat-label>Colour</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="productColour">
                         <mat-option *ngFor="let colour of product.colours" [value]="colour">{{colour}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <br>
                 <mat-form-field floatLabel="never" class="product-weight">
-                    <input matInput placeholder="Product weight">
+                    <input formControlName="productWeight" matInput placeholder="Product weight">
                 </mat-form-field>
                 <br>
                 <mat-form-field floatLabel="never" class="product-price">
-                    <input matInput placeholder="Product price">
+                    <input formControlName="productPrice" matInput placeholder="Product price">
                 </mat-form-field>
             </div>
             <div id="column">
                 <mat-form-field floatLabel="never" class="inhand-url">
-                    <input matInput placeholder="Inhand Imgur URL">
+                    <input formControlName="productPhoto" matInput placeholder="Inhand Imgur URL">
                 </mat-form-field>
                 <br>
                 <mat-form-field floatLabel="never" class="inspection-url">
-                    <input matInput placeholder="Inspection Imgur URL">
+                    <input formControlName="productInspection" matInput placeholder="Inspection Imgur URL">
                 </mat-form-field>
                 <br>
-                <mat-slide-toggle>recommended</mat-slide-toggle>
+                <mat-slide-toggle formControlName="productRecommend">recommended</mat-slide-toggle>
             </div>
             <div id="column">
                 <mat-form-field class="product comment">
                     <mat-label>Leave a comment</mat-label>
-                    <textarea matInput placeholder="Ex. Important things about the product"></textarea>
+                    <textarea formControlName="productComment" matInput placeholder="Ex. Important things about the product"></textarea>
                 </mat-form-field>
             </div>
+            <button mat-raised-button type="submit" color="primary">Submit</button>
         </form>
     </div>
 </mat-card>
