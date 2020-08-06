@@ -26,7 +26,8 @@ app.get('/api/url/taobao/:id', function (req, res) {
   // Create the URL from the id
   let url = `https://item.taobao.com/item.htm?id=${req.params.id}`
   var result = {}
-  
+  result["ID"] = Number(req.params.id)
+  result["origin"] = "TaoBao"
   // Call axios and then decode with iconv
   axios.get(url, { responseType: 'arraybuffer' })
     .then((response) => {

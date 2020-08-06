@@ -1,7 +1,8 @@
 <mat-card>    
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="product">
-        {{product?.title}}
+        <h1 (click)="minimised = !minimised">{{product?.title}}</h1>
+        <div *ngIf="!minimised">
         <mat-divider></mat-divider>
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <div id="column">
@@ -20,11 +21,13 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field floatLabel="never" class="product-weight">
-                    <input formControlName="productWeight" matInput placeholder="Product weight">
+                    <input type="number" formControlName="productWeight" matInput placeholder="Product weight">
+                    <span matSuffix>grams &nbsp;</span>
                 </mat-form-field>
                 <br>
                 <mat-form-field floatLabel="never" class="product-price">
-                    <input formControlName="productPrice" matInput placeholder="Product price">
+                    <span matPrefix>¥ &nbsp;</span>
+                    <input type="number" formControlName="productPrice" matInput placeholder="Product price">
                 </mat-form-field>
             </div>
             <div id="column">
@@ -36,7 +39,7 @@
                     <input formControlName="productInspection" matInput placeholder="Inspection Imgur URL">
                 </mat-form-field>
                 <br>
-                <mat-slide-toggle formControlName="productRecommend">recommended</mat-slide-toggle>
+                <mat-slide-toggle formControlName="productRecommend">Buy again?</mat-slide-toggle>
             </div>
             <div id="column">
                 <mat-form-field class="product comment">
@@ -44,7 +47,7 @@
                     <textarea formControlName="productComment" matInput placeholder="Ex. Important things about the product"></textarea>
                 </mat-form-field>
             </div>
-            <button mat-raised-button type="submit" color="primary">Submit</button>
         </form>
+    </div>
     </div>
 </mat-card>

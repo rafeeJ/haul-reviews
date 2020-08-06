@@ -26,6 +26,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
@@ -69,6 +70,7 @@ const firebaseConfig = {
     MatCardModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),

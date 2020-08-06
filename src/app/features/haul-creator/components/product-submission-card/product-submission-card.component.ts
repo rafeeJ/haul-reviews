@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
-import { Product } from 'src/app/models/product';
+import { Product, ProductListItem } from 'src/app/models/product';
 
 
 @Component({
@@ -11,11 +11,11 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductSubmissionCardComponent implements OnInit {
 
-  @Input() productID: number;
+  constructor(private api: ApiService) { }
+  
+  @Input() productID: ProductListItem;
+  
   public product: Product;
-
-  constructor(private api: ApiService) {
-  }
 
   productForm = new FormGroup({
     productSize: new FormControl(''),
@@ -30,39 +30,30 @@ export class ProductSubmissionCardComponent implements OnInit {
 
   public title: string;
   public validURL: boolean = false;
-  
-  taobaoLinkControl = new FormControl('', [
-    //Validators.pattern(/.*[taobao.com|tmall.com].*[?id=\d*]/),
-    Validators.pattern(/.+(taobao|tmall)\.com.*(id=\S+)/),
-    Validators.required
-  ]);
-
-  validateURL(URL: string) {
-    if(this.taobaoLinkControl.hasError('required')) {
-      console.log("enter a URL please");
-      this.validURL = false;
-    } else if(this.taobaoLinkControl.hasError('pattern')) {
-      console.log("enter a valid taobao URL");
-      this.validURL = false;
-    } else if(!this.taobaoLinkControl.hasError('required') && !this.taobaoLinkControl.hasError('pattern')){
-      this.validURL = true;
-      this.api.getItemFromID(Number(URL.match(/(?<=id=)\d{5,}/)[0]))
-       .subscribe(response => {
-        this.product = response
-       })
-    }
-  }
+  public minimised: boolean = false;
 
   ngOnInit(): void {
-    this.api.getItemFromID(this.productID).subscribe(response => {
-      this.product = response
-    })
+    switch (this.productID.origin) {
+      case "TaoBao":
+        this.api.getTaoBaoItemFromID(this.productID.ID).subscribe(response => {
+          this.product = response
+        })
+        break;
+      case "Weidian":
+        this.api.getWeidianItemFromID(this.productID.ID).subscribe(response => {
+          console.log(response);
+        })
+        break;
+    
+      default:
+        break;
+    }
+    
   }
 
-  
-
   onSubmit() {
-    console.log(this.productForm.value)
+    // console.log(this.productForm.value);
+    return(this.productForm.value);
   }
 
 }
