@@ -6,11 +6,15 @@ const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const iconv =  require('iconv-lite');
-
-var cors = require('cors');
+const helmet = require('helmet');
+const cors = require('cors');
+const morgan = require('morgan');
 
 const app = express();
+
 app.use(cors());
+app.use(helmet());
+app.use(morgan('combined'));
 
 app.use(express.static('./dist/haul-reviewer'));
 
