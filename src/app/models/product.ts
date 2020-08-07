@@ -9,6 +9,7 @@ export interface Product {
 export interface ProductSubmission{
     ID: number,
     title: string,
+    origin: "TaoBao" | "Weidian",
     size?: string,
     colour?: string,
     price: number,

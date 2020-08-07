@@ -3,7 +3,7 @@
     <div>
         <mat-form-field class="haul-name" appearance="outline">
             <mat-label>Give your haul a name</mat-label>
-            <input matInput placeholder="Ex. My Great Haul">
+            <input #haulName matInput placeholder="Ex. My Great Haul">
         </mat-form-field>
     </div>
 
@@ -23,10 +23,10 @@
     </mat-card>
     <mat-divider></mat-divider>
     <div>
-        <app-product-submission-card #productCard *ngFor="let productListItem of products" [productID]="productListItem"></app-product-submission-card>
+        <app-product-submission-card #productCard *ngFor="let productListItem of products" [productDetails]="productListItem"></app-product-submission-card>
     </div>
     <div>
-        <button *ngIf="products.length!=0" mat-raised-button color="primary" (click)="submitHaul()">Submit Haul</button>
+        <button *ngIf="products.length!=0" mat-raised-button color="primary" (click)="submitHaul(haulName.value)">Submit Haul</button>
     </div>
 
 </div>

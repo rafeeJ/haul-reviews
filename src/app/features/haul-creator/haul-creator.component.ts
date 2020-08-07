@@ -2,7 +2,10 @@ import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ProductSubmissionCardComponent } from './components/product-submission-card/product-submission-card.component';
-import { ProductSubmission, ProductListItem } from 'src/app/models/product';
+import { Product, ProductListItem, ProductSubmission } from 'src/app/models/product';
+import { HaulCreatorService } from './services/haul-creator.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-haul-creator',
@@ -11,10 +14,11 @@ import { ProductSubmission, ProductListItem } from 'src/app/models/product';
 })
 export class HaulCreatorComponent implements OnInit {
 
-  public products: Array<ProductListItem> = [];
-  @ViewChildren("productCard") cardArray: QueryList<ProductSubmissionCardComponent>
+  constructor(private api: ApiService, private hauls: HaulCreatorService, private auth: AuthService) { }
 
-  constructor(private api: ApiService) { }
+  public products: Array<ProductListItem> = [];
+  private user: User;
+  @ViewChildren("productCard") cardArray: QueryList<ProductSubmissionCardComponent>
 
   urlSubmitter = new FormGroup({
     productURL: new FormControl('', [Validators.pattern(/.+(taobao|weidian)\.com.*(itemID|id)=\S+/i)])
@@ -34,29 +38,29 @@ export class HaulCreatorComponent implements OnInit {
     }
   }
 
-  submitHaul() {
+  submitHaul(haulName) {
     let products = this.cardArray.toArray()
+    let haulItems = [];
+    // For each Product Card component that exists
     products.forEach(product => {
-      let formData = product.onSubmit()
-      let productSubmission: ProductSubmission;
-
-      productSubmission.ID = product.productID.ID
-      productSubmission.title = product.product.title
-      productSubmission.size = formData["productSize"]
-      productSubmission.colour = formData["productColour"]
-      productSubmission.price = formData["productPrice"]
-      productSubmission.weight = formData["productWeight"]
-      productSubmission.comments = formData["productComment"]
-      productSubmission.inspectionPhotoURL = formData["productInspection"]
-      productSubmission.inhandPhotoURL = formData["productPhoto"]
-      productSubmission.recommend = formData["productRecommend"]
-
+      var formData = product.onSubmit()
+      haulItems.push(formData)
     })
 
-
+    if(haulName) {
+      let data = {}
+      data["title"] = haulName
+      data["productList"] = haulItems
+      data["owner"] = this.user.uid
+      this.hauls.createHaul(data)
+        .then(res => {
+          console.log(res);
+        })
+    }
   }
 
   ngOnInit(): void {
+    this.auth.user$.subscribe(res => this.user = res)
   }
 
 }
