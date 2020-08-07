@@ -28,10 +28,10 @@ export class HaulCreatorComponent implements OnInit {
     if (this.urlSubmitter.valid) {
       let URL: string = this.urlSubmitter.value["productURL"]
       if (URL.toLowerCase().indexOf('weidian') > 0) {
-        let listItem: ProductListItem = { ID: Number(URL.match(/(?<=itemID=)\d{5,}/)[0]), origin: "Weidian" }
+        let listItem: ProductListItem = { ID: Number(URL.match(/itemID=([\d]+)/)[1]), origin: "Weidian" }
         this.products.push(listItem)
       } else if (URL.toLowerCase().indexOf('taobao') > 0) {
-        let listItem: ProductListItem = { ID: Number(URL.match(/(?<=id=)\d{5,}/)[0]), origin: "TaoBao" }
+        let listItem: ProductListItem = { ID: Number(URL.match(/id=([\d]+)/)[1]), origin: "TaoBao" }
         this.products.push(listItem)
       }
       this.urlSubmitter.reset()
