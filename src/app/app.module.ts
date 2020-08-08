@@ -31,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
 import { ProductSubmissionCardComponent } from './features/haul-creator/components/product-submission-card/product-submission-card.component';
+import { HaulDisplayComponent } from './features/haul-display/haul-display.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuhaMWFpZhM55INDUD_rDRJ0TLNcIfg98",
@@ -51,7 +52,8 @@ const firebaseConfig = {
     HomePageComponent,
     ProfilePageComponent,
     HaulCreatorComponent,
-    ProductSubmissionCardComponent
+    ProductSubmissionCardComponent,
+    HaulDisplayComponent
   ],
   imports: [
     HttpClientModule,

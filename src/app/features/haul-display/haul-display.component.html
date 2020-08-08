@@ -1,0 +1,16 @@
+<div class="container">
+    <mat-card>
+        <div>
+            <h1>{{ haul?.title }}</h1>
+            <p>By {{ haul?.owner }}</p>
+        </div>
+    </mat-card>
+
+    <div>
+        <mat-card *ngFor="let product of haul?.productList">
+            {{ product.title }}
+        </mat-card>
+    </div>
+
+
+</div>

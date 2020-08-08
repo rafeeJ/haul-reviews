@@ -6,6 +6,7 @@ import { Product, ProductListItem, ProductSubmission } from 'src/app/models/prod
 import { HaulCreatorService } from './services/haul-creator.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-haul-creator',
@@ -14,7 +15,10 @@ import { User } from 'src/app/models/user';
 })
 export class HaulCreatorComponent implements OnInit {
 
-  constructor(private api: ApiService, private hauls: HaulCreatorService, private auth: AuthService) { }
+  constructor(private api: ApiService, 
+              private hauls: HaulCreatorService, 
+              private auth: AuthService,
+              private router: Router) { }
 
   public products: Array<ProductListItem> = [];
   private user: User;
@@ -54,7 +58,8 @@ export class HaulCreatorComponent implements OnInit {
       data["owner"] = this.user.uid
       this.hauls.createHaul(data)
         .then(res => {
-          console.log(res);
+          console.log(res.id);
+          this.router.navigate([`/haul/${res.id}`])
         })
     }
   }
