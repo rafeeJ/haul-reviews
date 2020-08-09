@@ -25,4 +25,8 @@ export class ApiService {
     return this.firestore.collection("hauls").doc(id).get()
   }
 
+  getProfileFromID(id: string) {
+    return this.firestore.collection("profiles").doc(id).get()
+  }
+
 }

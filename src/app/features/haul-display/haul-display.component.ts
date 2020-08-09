@@ -13,6 +13,7 @@ export class HaulDisplayComponent implements OnInit {
               private api: ApiService) { }
 
   public haul;
+  public creatorProfile;
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
@@ -21,8 +22,15 @@ export class HaulDisplayComponent implements OnInit {
         this.api.getHaulfromID(haulID).subscribe(res => {
           console.log(res.data());
           this.haul = res.data()
+          this.getProfileData(res.data()["owner"])
         })
       }
+    })
+  }
+
+  getProfileData(id) {
+    this.api.getProfileFromID(id).subscribe(res => {
+      this.creatorProfile = res.data()
     })
   }
 
