@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
+import { Profile } from 'src/app/models/user';
+import { Haul } from 'src/app/models/haul';
 
 @Component({
   selector: 'app-haul-display',
@@ -12,8 +14,8 @@ export class HaulDisplayComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, 
               private api: ApiService) { }
 
-  public haul;
-  public creatorProfile;
+  public haul: Haul;
+  public creatorProfile: Profile;
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
@@ -21,7 +23,7 @@ export class HaulDisplayComponent implements OnInit {
       if(params.get("haulId")) {
         this.api.getHaulfromID(haulID).subscribe(res => {
           console.log(res.data());
-          this.haul = res.data()
+          this.haul = res.data() as Haul
           this.getProfileData(res.data()["owner"])
         })
       }
@@ -30,7 +32,7 @@ export class HaulDisplayComponent implements OnInit {
 
   getProfileData(id) {
     this.api.getProfileFromID(id).subscribe(res => {
-      this.creatorProfile = res.data()
+      this.creatorProfile = res.data() as Profile
     })
   }
 
