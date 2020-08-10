@@ -2,6 +2,7 @@
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="product">
         <h1 (click)="minimised = !minimised">{{product?.title}}</h1>
+        <mat-error *ngIf="hasError">Please make sure everything is valid</mat-error>
         <div *ngIf="!minimised">
             <mat-divider></mat-divider>
             <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
@@ -23,7 +24,7 @@
                     <br>
                     <mat-form-field floatLabel="never" class="product-price">
                         <span matPrefix>¥ &nbsp;</span>
-                        <input type="number" formControlName="productPrice" matInput placeholder="Product price">
+                        <input type="number" required formControlName="productPrice" matInput placeholder="Product price">
                     </mat-form-field>
                 </div>
                 <mat-divider vertical></mat-divider>

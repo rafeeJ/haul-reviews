@@ -11,4 +11,8 @@ export class HaulCreatorService {
   createHaul(data) {
     return this.firestore.collection("hauls").add(data)
   }
+
+  createProduct(data) {
+    return this.firestore.collection("products").add(data)
+  }
 }

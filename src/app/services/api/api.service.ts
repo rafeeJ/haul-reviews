@@ -21,6 +21,13 @@ export class ApiService {
     //return this.http.get<Product>(`${environment.apiURL}url/taobao/${id}`)
   }
 
+  getProductFromDB(id: number, origin: string) {
+    return this.firestore.collection("products", 
+      ref => 
+        ref.where('ID','==', id)
+        .where('origin', '==', origin)).get()
+  }
+
   getHaulfromID(id: string) {
     return this.firestore.collection("hauls").doc(id).get()
   }
