@@ -15,6 +15,7 @@ export class ProductSubmissionCardComponent implements OnInit {
   
   @Input() productDetails: ProductListItem;
   public product: Product;
+  public inHand = false;
 
   productForm = new FormGroup({
     productSize: new FormControl(''),

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
@@ -27,6 +27,12 @@ export class ApiService {
 
   getProfileFromID(id: string) {
     return this.firestore.collection("profiles").doc(id).get()
+  }
+
+  getImgurAlbumFromID(id: number) {
+    let token = (process.env.IMGUR_ID || environment.imgurID)
+    let header = new HttpHeaders().set("Authorization", `Client-ID ${token}`)
+    return this.http.get(`https://api.imgur.com/3/album/{{albumHash}}/images`, {headers: header})
   }
 
 }

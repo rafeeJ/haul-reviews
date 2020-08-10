@@ -1,53 +1,66 @@
-<mat-card>    
+<mat-card>
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="product">
         <h1 (click)="minimised = !minimised">{{product?.title}}</h1>
         <div *ngIf="!minimised">
-        <mat-divider></mat-divider>
-        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-            <div id="column">
-                <mat-form-field *ngIf="product?.sizes" appearance="fill">
-                    <mat-label>Size</mat-label>
-                    <mat-select formControlName="productSize">
-                        <mat-option *ngFor="let size of product.sizes" [value]="size">{{size}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br>
-                <mat-form-field *ngIf="product?.colours" appearance="fill">
-                    <mat-label>Colour</mat-label>
-                    <mat-select formControlName="productColour">
-                        <mat-option *ngFor="let colour of product.colours" [value]="colour">{{colour}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br>
-                <mat-form-field floatLabel="never" class="product-weight">
-                    <input type="number" formControlName="productWeight" matInput placeholder="Product weight">
-                    <span matSuffix>grams &nbsp;</span>
-                </mat-form-field>
-                <br>
-                <mat-form-field floatLabel="never" class="product-price">
-                    <span matPrefix>¥ &nbsp;</span>
-                    <input type="number" formControlName="productPrice" matInput placeholder="Product price">
-                </mat-form-field>
-            </div>
-            <div id="column">
-                <mat-form-field floatLabel="never" class="inhand-url">
-                    <input formControlName="productPhoto" matInput placeholder="Inhand Imgur URL">
-                </mat-form-field>
-                <br>
-                <mat-form-field floatLabel="never" class="inspection-url">
-                    <input formControlName="productInspection" matInput placeholder="Inspection Imgur URL">
-                </mat-form-field>
-                <br>
-                <mat-slide-toggle formControlName="productRecommend">Buy again?</mat-slide-toggle>
-            </div>
-            <div id="column">
-                <mat-form-field class="product comment">
-                    <mat-label>Leave a comment</mat-label>
-                    <textarea formControlName="productComment" matInput placeholder="Ex. Important things about the product"></textarea>
-                </mat-form-field>
-            </div>
-        </form>
-    </div>
+            <mat-divider></mat-divider>
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <div id="column">
+                    <h4>Your options</h4>
+                    <mat-form-field *ngIf="product?.sizes" appearance="fill">
+                        <mat-label>Size</mat-label>
+                        <mat-select formControlName="productSize">
+                            <mat-option *ngFor="let size of product.sizes" [value]="size">{{size}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field *ngIf="product?.colours" appearance="fill">
+                        <mat-label>Colour</mat-label>
+                        <mat-select formControlName="productColour">
+                            <mat-option *ngFor="let colour of product.colours" [value]="colour">{{colour}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field floatLabel="never" class="product-price">
+                        <span matPrefix>¥ &nbsp;</span>
+                        <input type="number" formControlName="productPrice" matInput placeholder="Product price">
+                    </mat-form-field>
+                </div>
+                <mat-divider vertical></mat-divider>
+                <div id="column">
+                    <h4>Warehouse info</h4>
+                    <mat-form-field floatLabel="never" class="product-weight">
+                        <input type="number" formControlName="productWeight" matInput placeholder="Product weight">
+                        <span matSuffix>grams &nbsp;</span>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field floatLabel="never" class="inspection-url">
+                        <input formControlName="productInspection" matInput placeholder="Inspection Imgur URL">
+                    </mat-form-field>
+                </div>
+                <mat-divider vertical></mat-divider>
+                <div id="column">
+                    <h4>Inhand info</h4>
+                    <mat-slide-toggle [(ngModel)]="inHand" [ngModelOptions]="{standalone: true}">Product in Hand?</mat-slide-toggle>
+                    <br>
+                    <div *ngIf="inHand">
+                        <mat-form-field floatLabel="never" class="inhand-url">
+                            <input formControlName="productPhoto" matInput placeholder="Inhand Imgur URL">
+                        </mat-form-field>
+                        <br>
+                        <mat-slide-toggle formControlName="productRecommend">Buy again?</mat-slide-toggle>
+                    </div>
+                </div>
+                <mat-divider vertical></mat-divider>
+                <div id="column">
+                    <h4>Comment</h4>
+                    <mat-form-field class="product comment">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea formControlName="productComment" matInput
+                            placeholder="Ex. Important things about the product"></textarea>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
     </div>
 </mat-card>

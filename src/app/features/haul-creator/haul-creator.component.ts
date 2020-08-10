@@ -25,7 +25,7 @@ export class HaulCreatorComponent implements OnInit {
   @ViewChildren("productCard") cardArray: QueryList<ProductSubmissionCardComponent>
 
   urlSubmitter = new FormGroup({
-    productURL: new FormControl('', [Validators.pattern(/.+(taobao|weidian)\.com.*(itemID|id)=\S+/i)])
+    productURL: new FormControl('', [Validators.pattern(/.+(taobao|weidian)\.com.*(itemID|id)=\S+/i), Validators.required])
   })
 
   validateURL() {
