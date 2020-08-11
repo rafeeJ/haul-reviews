@@ -69,6 +69,25 @@ app.get('/api/url/taobao/:id', function (req, res) {
     })
 });
 
+app.get('/api/url/taobao/:id/images', function (req, res) {
+  let url = `https://item.taobao.com/item.htm?id=${req.params.id}`
+  var result = []
+
+  axios.get(url, { responseType: 'arraybuffer'})
+    .then((response) => {
+      data = iconv.decode(response.data, 'gbk')
+
+      // Instantiate cheerio
+      let $ = cheerio.load(data);
+
+      let galleryHTML = $('li > div > a > img', '.tb-gallery')
+      galleryHTML.each(function(i, ele) {
+        result.push($(this).attr('data-src').replace("_50x50.jpg", ""));
+      })
+      res.send(result)
+    })
+})
+
 app.get('/*', function (req, res) {
   res.sendFile('index.html', { root: 'dist/haul-reviewer' }
   );

@@ -9,9 +9,14 @@ import { ProductSubmission } from 'src/app/models/product';
 export class ProductDispplayCardComponent implements OnInit {
 
   constructor() { }
+  
   @Input() product: ProductSubmission;
+  public pics = []
 
   ngOnInit(): void {
+    if (this.product.inhandPhotoURL && this.product.inspectionPhotoURL) {
+      // get images from source. 
+    }
   }
 
 }
