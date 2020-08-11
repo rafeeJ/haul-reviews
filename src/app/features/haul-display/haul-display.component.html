@@ -7,9 +7,7 @@
     </mat-card>
 
     <div>
-        <mat-card *ngFor="let product of haul?.productList">
-            {{ product.title }}
-        </mat-card>
+        <app-product-dispplay-card *ngFor="let product of haul?.productList" [product]="product"></app-product-dispplay-card>
     </div>
 
 
