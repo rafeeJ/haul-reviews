@@ -6036,6 +6036,13 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+ng-image-slider@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/ng-image-slider/-/ng-image-slider-2.6.1.tgz#4c399ea2477ec2d0396cad214d4124bb9b68ebe2"
+  integrity sha512-piFUSKPpvSTDaP0NQZCDhrGjG26ynX1G30mFImXEG3wb9kkpnquG8XvGJ4WA0s6BcHpDQIcEi6/vxJScO8a/Ug==
+  dependencies:
+    tslib "^1.9.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

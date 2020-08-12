@@ -15,6 +15,10 @@ export class ApiService {
   getTaoBaoItemFromID(id: number) {
     return this.http.get<Product>(`${environment.apiURL}url/taobao/${id}`)
   }
+
+  getTaoBaoImagesFromID(id: number) {
+    return this.http.get(`${environment.apiURL}url/taobao/${id}/images`)
+  }
   
   getWeidianItemFromID(id: number) {
     return of({"Yeet": "yeet"})

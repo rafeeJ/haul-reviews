@@ -4,6 +4,7 @@
         <mat-card-subtitle>{{ product.origin }}</mat-card-subtitle>
     </mat-card-header>
     <!-- This is where imgur album will go -->
+    <ng-image-slider [images]="pics" [imagePopup]="false" #nav></ng-image-slider>
     <mat-card-content>
         <p>Content</p>
     </mat-card-content>
