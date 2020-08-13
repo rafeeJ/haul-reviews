@@ -40,10 +40,10 @@ export class ApiService {
     return this.firestore.collection("profiles").doc(id).get()
   }
 
-  getImgurAlbumFromID(id: number) {
-    let token = (process.env.IMGUR_ID || environment.imgurID)
+  getImgurAlbumFromID(hash: string) {    
+    let token = environment.imgurID
     let header = new HttpHeaders().set("Authorization", `Client-ID ${token}`)
-    return this.http.get(`https://api.imgur.com/3/album/{{albumHash}}/images`, {headers: header})
+    return this.http.get(`https://api.imgur.com/3/album/${hash}/images`, {headers: header})
   }
 
 }

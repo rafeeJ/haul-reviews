@@ -1,13 +1,17 @@
 <div class="container">
+    <div class="header">
     <mat-card>
         <div>
             <h1>{{ haul?.title }}</h1>
-            <p>By {{ creatorProfile?.displayName }}</p>
         </div>
     </mat-card>
+    <div>
+        <app-hauler-profile [profile]="creatorProfile"></app-hauler-profile>
+    </div>
+</div>
 
     <div>
-        <app-product-dispplay-card *ngFor="let product of haul?.productList" [product]="product"></app-product-dispplay-card>
+        <app-product-display-card *ngFor="let product of haul?.productList" [product]="product"></app-product-display-card>
     </div>
 
 

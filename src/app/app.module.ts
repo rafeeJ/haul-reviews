@@ -33,7 +33,8 @@ import { ProfilePageComponent } from './features/profile-page/profile-page.compo
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
 import { ProductSubmissionCardComponent } from './features/haul-creator/components/product-submission-card/product-submission-card.component';
 import { HaulDisplayComponent } from './features/haul-display/haul-display.component';
-import { ProductDispplayCardComponent } from './features/haul-display/components/product-dispplay-card/product-dispplay-card.component';
+import { ProductDisplayCardComponent } from './features/haul-display/components/product-display-card/product-display-card.component';
+import { HaulerProfileComponent } from './features/haul-display/components/hauler-profile/hauler-profile.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuhaMWFpZhM55INDUD_rDRJ0TLNcIfg98",
@@ -56,7 +57,8 @@ const firebaseConfig = {
     HaulCreatorComponent,
     ProductSubmissionCardComponent,
     HaulDisplayComponent,
-    ProductDispplayCardComponent
+    ProductDisplayCardComponent,
+    HaulerProfileComponent
   ],
   imports: [
     HttpClientModule,
