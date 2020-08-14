@@ -40,7 +40,17 @@ export class ProductDisplayCardComponent implements OnInit {
   }
 
   visitProduct() {
-
+    switch (this.product.origin) {
+      case "TaoBao":
+        window.open(`//item.taobao.com/item.htm?id=${this.product.ID}`, '_blank')
+        break;
+      case "Weidian":
+        
+        break;
+    
+      default:
+        break;
+    }
   }
 
 }

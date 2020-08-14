@@ -1,8 +1,4 @@
 <mat-card>
-    <mat-card-title>Hauler Profile</mat-card-title>
-    <mat-card-subtitle> {{ profile?.displayName }} </mat-card-subtitle>
+    <p>Haul by <b>{{ profile?.displayName }}</b><br>{{ profile?.height }} | {{ profile?.build }}</p>
     <button mat-mini-fab color="accent" style="background-position: center; background-size: contain;" [ngStyle]="{ 'background-image': 'url(' + profile?.photoURL + ')'}"></button>
-    <mat-card-content> 
-        <p>{{ profile?.height }} | {{ profile?.build }}</p>
-    </mat-card-content>
 </mat-card>

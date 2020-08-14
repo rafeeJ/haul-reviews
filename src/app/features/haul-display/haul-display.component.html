@@ -1,18 +1,13 @@
 <div class="container">
-    <div class="header">
     <mat-card>
+        <div style="margin-top: auto; margin-bottom: auto;">
+            <h1 style="margin: 0;">{{ haul?.title }}</h1>
+        </div>
         <div>
-            <h1>{{ haul?.title }}</h1>
+            <app-hauler-profile [profile]="creatorProfile"></app-hauler-profile>
         </div>
     </mat-card>
-    <div>
-        <app-hauler-profile [profile]="creatorProfile"></app-hauler-profile>
-    </div>
-</div>
-
-    <div>
+    <div class="haul-container">
         <app-product-display-card *ngFor="let product of haul?.productList" [product]="product"></app-product-display-card>
     </div>
-
-
 </div>
