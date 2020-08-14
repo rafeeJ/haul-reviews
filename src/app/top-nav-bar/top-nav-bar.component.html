@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>Haul Reviewer</span>
+  <span [routerLink]="['/']">Haul Reviewer</span>
   <span class="spacer"></span>
   <div *ngIf="auth.user$ | async; then authenticated else guest">
     <!-- template will replace this div -->
@@ -10,7 +10,6 @@
 <ng-template #guest>
   <button mat-raised-button color="accent" (click)="auth.googleSignin()">
     <i class="fa fa-google"></i>Login</button>
-
 </ng-template>
 
 
@@ -18,6 +17,14 @@
 <ng-template #authenticated>
   <div *ngIf="auth.user$ | async as user">
     <span class="spacer"></span>
-    <button mat-raised-button color="accent" (click)="auth.signOut()">Logout</button>
+    <button mat-mini-fab color="accent" style="background-position: center; background-size: contain;" [ngStyle]="{ 'background-image': 'url(' + user.photoURL + ')'}" [matMenuTriggerFor]="beforeMenu">
+      <!-- <img [src]="user.photoURL" alt=""> -->
+    </button>
   </div>
 </ng-template>
+
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item [routerLink]="['/myProfile']" fragment="profile">My Profile</button>
+  <button mat-menu-item [routerLink]="['/myProfile']" fragment="hauls">My Hauls</button>
+  <button mat-menu-item (click)="auth.signOut()">Sign Out</button>
+</mat-menu>

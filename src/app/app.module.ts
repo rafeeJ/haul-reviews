@@ -27,6 +27,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgImageSliderModule } from 'ng-image-slider';
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
@@ -78,6 +80,8 @@ const firebaseConfig = {
     MatDividerModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatMenuModule,
+    MatTabsModule,
     NgImageSliderModule,
     FormsModule,
     ReactiveFormsModule,
