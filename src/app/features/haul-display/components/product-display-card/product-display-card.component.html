@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-subtitle>{{ product.origin }}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- This is where imgur album will go -->
+    <ng-image-slider [images]="pics" [imagePopup]="false" #nav></ng-image-slider>
+    <mat-card-content>
+        <div *ngIf="product?.colour.length!=0">
+            <h6>Colour</h6>
+            <p> {{product?.colour}} </p>
+        </div>
+        <div *ngIf="product?.size.length!=0">
+            <h6>Size</h6>
+            <p> {{product?.size}} </p>
+        </div>
+        <div>
+            <h6>User Recommended?</h6>
+            <p> {{product?.recommend ? 'Yep' : 'Nope'}} </p>
+        </div>
+        <p> {{product?.comments}} </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="visitProduct()" color="primary">Visit Product</button>
+    </mat-card-actions>
+</mat-card>

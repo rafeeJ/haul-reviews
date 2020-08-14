@@ -6,6 +6,8 @@ import { Product, ProductListItem, ProductSubmission } from 'src/app/models/prod
 import { HaulCreatorService } from './services/haul-creator.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-haul-creator',
@@ -14,14 +16,18 @@ import { User } from 'src/app/models/user';
 })
 export class HaulCreatorComponent implements OnInit {
 
-  constructor(private api: ApiService, private hauls: HaulCreatorService, private auth: AuthService) { }
+  constructor(private api: ApiService,
+    private hauls: HaulCreatorService,
+    private auth: AuthService,
+    private router: Router) { }
 
   public products: Array<ProductListItem> = [];
   private user: User;
+  public hasError = false;
   @ViewChildren("productCard") cardArray: QueryList<ProductSubmissionCardComponent>
 
   urlSubmitter = new FormGroup({
-    productURL: new FormControl('', [Validators.pattern(/.+(taobao|weidian)\.com.*(itemID|id)=\S+/i)])
+    productURL: new FormControl('', [Validators.pattern(/.+(taobao|weidian)\.com.*(itemID|id)=\S+/i), Validators.required])
   })
 
   validateURL() {
@@ -41,21 +47,33 @@ export class HaulCreatorComponent implements OnInit {
   submitHaul(haulName) {
     let products = this.cardArray.toArray()
     let haulItems = [];
-    // For each Product Card component that exists
-    products.forEach(product => {
-      var formData = product.onSubmit()
-      haulItems.push(formData)
-    })
 
-    if(haulName) {
-      let data = {}
-      data["title"] = haulName
-      data["productList"] = haulItems
-      data["owner"] = this.user.uid
-      this.hauls.createHaul(data)
-        .then(res => {
-          console.log(res);
-        })
+    // For each Product Card component that exists
+    for (let product of products) {
+      // If this given product is invalid, note it.
+      if (!product.productForm.valid) {
+        product.hasError = true
+        this.hasError = true
+        break;
+      } else {
+        // If everything is valid, submit it
+        product.hasError = false
+        var formData = product.onSubmit()
+        haulItems.push(formData)
+      }
+      
+      if(!this.hasError) {
+        let data = {}
+        data["title"] = haulName || `${faker.hacker.adjective()} ${faker.hacker.adjective()} ${faker.hacker.noun()}`
+        data["productList"] = haulItems
+        data["owner"] = this.user.uid
+        
+        this.hauls.createHaul(data)
+          .then(res => {
+            console.log(res.id);
+            this.router.navigate([`/haul/${res.id}`])
+          })
+        }
     }
   }
 

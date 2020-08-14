@@ -29,10 +29,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
 import { ProductSubmissionCardComponent } from './features/haul-creator/components/product-submission-card/product-submission-card.component';
+import { HaulDisplayComponent } from './features/haul-display/haul-display.component';
+import { ProductDisplayCardComponent } from './features/haul-display/components/product-display-card/product-display-card.component';
+import { HaulerProfileComponent } from './features/haul-display/components/hauler-profile/hauler-profile.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuhaMWFpZhM55INDUD_rDRJ0TLNcIfg98",
@@ -53,7 +57,10 @@ const firebaseConfig = {
     HomePageComponent,
     ProfilePageComponent,
     HaulCreatorComponent,
-    ProductSubmissionCardComponent
+    ProductSubmissionCardComponent,
+    HaulDisplayComponent,
+    ProductDisplayCardComponent,
+    HaulerProfileComponent
   ],
   imports: [
     HttpClientModule,
@@ -75,6 +82,7 @@ const firebaseConfig = {
     MatCheckboxModule,
     MatMenuModule,
     MatTabsModule,
+    NgImageSliderModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),

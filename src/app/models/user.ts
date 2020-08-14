@@ -4,3 +4,12 @@ export interface User {
     photoURL?: string;
     displayName?: string;
 }
+
+export interface Profile {
+    uid: string;
+    photoURL?: string;
+    displayName?: string;
+    country?: string;
+    height?: string;
+    build?: string;
+}

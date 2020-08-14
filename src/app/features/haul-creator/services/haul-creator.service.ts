@@ -9,11 +9,10 @@ export class HaulCreatorService {
   constructor( private firestore: AngularFirestore ) { }
 
   createHaul(data) {
-    return new Promise<any>((resolve, reject) => {
-      this.firestore
-        .collection("hauls")
-        .add(data)
-        .then(res => {}, err => reject(err))
-    })
+    return this.firestore.collection("hauls").add(data)
+  }
+
+  createProduct(data) {
+    return this.firestore.collection("products").add(data)
   }
 }

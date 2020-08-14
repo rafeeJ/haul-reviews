@@ -15,7 +15,7 @@
                 <input #productUrl formControlName="productURL" (blur)="validateURL()" (keyup.enter)="validateURL()" matInput
                     placeholder="Product URL">
             </mat-form-field>
-            <mat-error *ngIf="!urlSubmitter.valid">
+            <mat-error *ngIf="!urlSubmitter.hasError('pattern')">
                 Please enter valid URL
             </mat-error>
             <button mat-raised-button type="submit" style="float: right;" color="primary">Add</button>
@@ -26,7 +26,7 @@
         <app-product-submission-card #productCard *ngFor="let productListItem of products" [productDetails]="productListItem"></app-product-submission-card>
     </div>
     <div>
+        <mat-error *ngIf="hasError">Please make sure everything is valid</mat-error>
         <button *ngIf="products.length!=0" mat-raised-button color="primary" (click)="submitHaul(haulName.value)">Submit Haul</button>
     </div>
-
 </div>
