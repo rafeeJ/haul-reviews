@@ -51,8 +51,9 @@ export class ProductSubmissionCardComponent implements OnInit {
         });
         break;
       case "Weidian":
-        this.api.getWeidianItemFromID(this.productDetails.ID).subscribe(response => {
-          console.log(response);
+        this.api.getWeidianItemFromID(this.productDetails.ID)
+          .subscribe(response => {
+            this.product = response
         })
         break;
       default:

@@ -69,6 +69,36 @@ app.get('/api/url/taobao/:id', function (req, res) {
     })
 });
 
+/** 
+ * Returns the specified product's title, available sizes and available colours. 
+ * It will not return sizes/colours array if they are not applicable
+ * 
+ * @param {number} id The Weidian ID for the specified product.
+ * @return {object} Object with title, colours and sizes 
+ */
+app.get('/api/url/weidian/:id', function (req, res) {
+  // Create the URL from the id
+  let url = `https://weidian.com/item.html?itemID=${req.params.id}`
+  var result = {}
+  result["ID"] = Number(req.params.id)
+  result["origin"] = "Weidian"
+  // Call axios and then decode with iconv
+  axios.get(url, { responseType: 'arraybuffer' })
+    .then((response) => {
+      data = iconv.decode(response.data, 'gbk')
+
+      // Instantiate cheerio
+      let $ = cheerio.load(data);
+
+      // Get the title
+      let title = $('.item-name', '.content-str').text()//.trim()
+      console.log(title);
+      result["title"] = title
+      
+      res.send(result)
+    })
+});
+
 app.get('/api/url/taobao/:id/images', function (req, res) {
   let url = `https://item.taobao.com/item.htm?id=${req.params.id}`
   var result = []

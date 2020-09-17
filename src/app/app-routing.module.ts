@@ -10,7 +10,7 @@ import { HaulDisplayComponent } from './features/haul-display/haul-display.compo
 const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'createHaul', component: HaulCreatorComponent, canActivate: [AuthGuard]},
-  { path: 'myProfile', component: ProfilePageComponent, canActivate: [AuthGuard]}
+  { path: 'myProfile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path: 'haul/:haulId', component: HaulDisplayComponent}
 ];
 

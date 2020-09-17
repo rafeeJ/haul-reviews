@@ -4,6 +4,8 @@ import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { Haul } from 'src/app/models/haul';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +23,8 @@ export class ApiService {
   }
   
   getWeidianItemFromID(id: number) {
-    return of({"Yeet": "yeet"})
-    //return this.http.get<Product>(`${environment.apiURL}url/taobao/${id}`)
+    //return of({"Yeet": "yeet"})
+    return this.http.get<Product>(`${environment.apiURL}url/weidian/${id}`)
   }
 
   getProductFromDB(id: number, origin: string) {
@@ -44,6 +46,26 @@ export class ApiService {
     let token = environment.imgurID
     let header = new HttpHeaders().set("Authorization", `Client-ID ${token}`)
     return this.http.get(`https://api.imgur.com/3/album/${hash}/images`, {headers: header})
+  }
+
+  getHaulsFromUserID(userID: string) {
+    return this.firestore.collection("hauls", ref => ref.where('owner', '==', userID))
+      .snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          let data = a.payload.doc.data() as Haul;
+          let uid = a.payload.doc.id;
+          return { uid, ...data }
+        }))
+      )
+  }
+
+  deleteHaulFromID(haulID: string) {
+    return this.firestore.collection("hauls").doc(haulID).delete()
+      .then(result => {
+        console.log("It deleted");
+      }).catch(error => {
+        console.log("There was an error deleting");
+      })
   }
 
 }

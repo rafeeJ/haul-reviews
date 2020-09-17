@@ -31,11 +31,15 @@ export class ProductDisplayCardComponent implements OnInit {
         })
       })
     } else if (this.product.inhandPhotoURL==="" && this.product.inspectionPhotoURL==="") {
-      this.api.getTaoBaoImagesFromID(this.product.ID).subscribe((res: Array<string>) => {
-        for(let pic of res) {
-          this.pics.push({thumbImage: "https:" + pic})          
-        }
-      })
+      if (this.product.origin === "TaoBao") {
+        this.api.getTaoBaoImagesFromID(this.product.ID).subscribe((res: Array<string>) => {
+          for(let pic of res) {
+            this.pics.push({thumbImage: "https:" + pic})          
+          }
+        })
+      } else {
+        this.pics.push({thumbImage: "https://avatars2.githubusercontent.com/u/33718664?s=200&v=4"})
+      }
     }
   }
 
@@ -45,9 +49,8 @@ export class ProductDisplayCardComponent implements OnInit {
         window.open(`//item.taobao.com/item.htm?id=${this.product.ID}`, '_blank')
         break;
       case "Weidian":
-        
+        window.open(`//weidian.com/item.html?itemID=${this.product.ID}`, '_blank')
         break;
-    
       default:
         break;
     }

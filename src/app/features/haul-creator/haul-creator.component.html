@@ -14,10 +14,11 @@
             <mat-form-field style="width: 80%;" floatLabel="never" class="submit-url">
                 <input #productUrl formControlName="productURL" (blur)="validateURL()" (keyup.enter)="validateURL()" matInput
                     placeholder="Product URL">
+                <mat-error *ngIf="!urlSubmitter.hasError('pattern')">
+                        Please enter valid URL
+                    </mat-error>
             </mat-form-field>
-            <mat-error *ngIf="!urlSubmitter.hasError('pattern')">
-                Please enter valid URL
-            </mat-error>
+            
             <button mat-raised-button type="submit" style="float: right;" color="primary">Add</button>
         </form>
     </mat-card>

@@ -1,0 +1,11 @@
+#main {
+    margin: 1rem;
+}
+
+#product-container {
+    display: flex;
+    justify-content: flex-start;
+    mat-card {
+        margin: 1rem;
+    }
+}

@@ -29,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NgImageSliderModule } from 'ng-image-slider';
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
@@ -37,6 +38,9 @@ import { ProductSubmissionCardComponent } from './features/haul-creator/componen
 import { HaulDisplayComponent } from './features/haul-display/haul-display.component';
 import { ProductDisplayCardComponent } from './features/haul-display/components/product-display-card/product-display-card.component';
 import { HaulerProfileComponent } from './features/haul-display/components/hauler-profile/hauler-profile.component';
+import { MyHaulsComponent } from './features/profile-page/components/my-hauls/my-hauls.component';
+import { PublicProfileComponent } from './features/profile-page/components/public-profile/public-profile.component';
+import { EditDialogComponent } from './features/profile-page/components/my-hauls/edit-dialog/edit-dialog.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuhaMWFpZhM55INDUD_rDRJ0TLNcIfg98",
@@ -60,7 +64,10 @@ const firebaseConfig = {
     ProductSubmissionCardComponent,
     HaulDisplayComponent,
     ProductDisplayCardComponent,
-    HaulerProfileComponent
+    HaulerProfileComponent,
+    MyHaulsComponent,
+    PublicProfileComponent,
+    EditDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -82,6 +89,7 @@ const firebaseConfig = {
     MatCheckboxModule,
     MatMenuModule,
     MatTabsModule,
+    MatDialogModule,
     NgImageSliderModule,
     FormsModule,
     ReactiveFormsModule,
