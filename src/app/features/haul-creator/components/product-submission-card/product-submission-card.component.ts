@@ -14,9 +14,8 @@ export class ProductSubmissionCardComponent implements OnInit {
 
   constructor(private api: ApiService, private sneaker: HaulCreatorService) { }
 
-  @Input() productDetails: ProductListItem;
+  @Input() product: Product;
 
-  public product: Product;
   public inHand = false;
   public hasError = false;
 
@@ -34,31 +33,6 @@ export class ProductSubmissionCardComponent implements OnInit {
   public minimised: boolean = false;
 
   ngOnInit(): void {
-    switch (this.productDetails.origin) {
-      case "TaoBao":
-      // If getProductFromDB returns an empty array, add product to database.  
-      this.api.getProductFromDB(this.productDetails.ID, this.productDetails.origin)
-        .subscribe(res => {
-          if(res.docs.length === 0) {
-            this.api.getTaoBaoItemFromID(this.productDetails.ID)
-              .subscribe(response => { 
-                this.product = response
-                this.sneaker.createProduct(response)
-                })
-          } else {
-            this.product = res.docs[0].data() as Product
-          }
-        });
-        break;
-      case "Weidian":
-        this.api.getWeidianItemFromID(this.productDetails.ID)
-          .subscribe(response => {
-            this.product = response
-        })
-        break;
-      default:
-        break;
-    }
   }
 
   onSubmit() {
@@ -67,7 +41,7 @@ export class ProductSubmissionCardComponent implements OnInit {
 
     submission["ID"] = this.product.ID
     submission["title"] = this.product.title;
-    submission["origin"] = this.productDetails.origin
+    submission["origin"] = this.product.origin
 
     submission["size"] = formData["productSize"]
     submission["colour"] = formData["productColour"]

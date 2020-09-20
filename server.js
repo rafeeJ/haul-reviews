@@ -8,6 +8,7 @@ const cheerio = require('cheerio');
 const iconv =  require('iconv-lite');
 
 var cors = require('cors');
+const { exception } = require('console');
 
 const app = express();
 app.use(cors());
@@ -64,8 +65,11 @@ app.get('/api/url/taobao/:id', function (req, res) {
           result["sizes"] = sizes
         }
       }
-      
-      res.send(result)
+      if(title === "") {
+        res.send("rip")
+      } else {
+        res.send(result)
+      }
     })
 });
 

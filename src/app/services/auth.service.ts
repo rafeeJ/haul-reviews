@@ -54,7 +54,8 @@ export class AuthService {
     const profileData = { 
       uid: user.uid,  
       displayName: user.displayName, 
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      public: false
     } 
 
     profileRef.set(profileData, { merge: true})

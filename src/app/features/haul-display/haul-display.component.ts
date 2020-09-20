@@ -22,7 +22,7 @@ export class HaulDisplayComponent implements OnInit {
       let haulID = params.get("haulId")
       if(params.get("haulId")) {
         this.api.getHaulfromID(haulID).subscribe(res => {
-          console.log(res.data());
+          console.debug(res.data());
           this.haul = res.data() as Haul
           this.getProfileData(res.data()["owner"])
         })

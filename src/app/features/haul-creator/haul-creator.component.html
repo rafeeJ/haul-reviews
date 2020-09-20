@@ -24,7 +24,7 @@
     </mat-card>
     <mat-divider></mat-divider>
     <div>
-        <app-product-submission-card #productCard *ngFor="let productListItem of products" [productDetails]="productListItem"></app-product-submission-card>
+        <app-product-submission-card #productCard *ngFor="let productListItem of products" [product]="productListItem"></app-product-submission-card>
     </div>
     <div>
         <mat-error *ngIf="hasError">Please make sure everything is valid</mat-error>

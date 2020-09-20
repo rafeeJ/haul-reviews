@@ -11,5 +11,6 @@ export interface Profile {
     displayName?: string;
     country?: string;
     height?: string;
-    build?: string;
+    build?: "Thick" | "Built" | "Slim" | ""
+    public: boolean;
 }

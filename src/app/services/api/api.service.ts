@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private http: HttpClient, private firestore: AngularFirestore ) { }
 
   getTaoBaoItemFromID(id: number) {
-    return this.http.get<Product>(`${environment.apiURL}url/taobao/${id}`)
+    return this.http.get<Product|string>(`${environment.apiURL}url/taobao/${id}`)
   }
 
   getTaoBaoImagesFromID(id: number) {
@@ -66,6 +66,10 @@ export class ApiService {
       }).catch(error => {
         console.log("There was an error deleting");
       })
+  }
+
+  updateProfileData(profileID, data) {
+    return this.firestore.collection("profiles").doc(profileID).set(data, {merge: true})
   }
 
 }

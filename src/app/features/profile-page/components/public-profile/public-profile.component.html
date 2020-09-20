@@ -1,1 +1,35 @@
-<p>public-profile works!</p>
+<div id="container">
+    <h1>Your Profile</h1>
+    <div id="profile-container" *ngIf="profile">
+        <div>
+            <img src="{{profile.photoURL}}" alt="">
+        </div>
+        <div>
+            <form [formGroup]="profileEditor" (ngSubmit)="makeChanges()">
+                <mat-form-field>
+                    <mat-label>Display Name</mat-label>
+                    <input required type="text" formControlName="displayName" matInput [(ngModel)]="profile.displayName">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Build</mat-label>
+                    <mat-select formControlName="build" [(ngModel)]="profile.build">
+                      <mat-option value="Slim">Slim</mat-option>
+                      <mat-option value="Built">Built</mat-option>
+                      <mat-option value="Thick">Thick</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field>
+                    <mat-label>Height</mat-label>
+                    <input required type="text" formControlName="height" matInput [(ngModel)]="profile.height">
+                </mat-form-field>
+                <br>
+                <mat-slide-toggle formControlName="public" checked="profile.public">Public Profile</mat-slide-toggle>
+                <br>
+                <button *ngIf="profileEditor.dirty"> Save changes </button>
+                <mat-error *ngIf="profileEditor.dirty">You have made changes! Make sure to save them.</mat-error>
+            </form>
+        </div>
+    </div>
+</div>
