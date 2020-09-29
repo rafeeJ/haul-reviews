@@ -1,0 +1,17 @@
+#container {
+    margin: 1.5rem;
+}
+
+#info-container {
+    display: flex;
+    justify-content: space-between;
+    mat-card {
+        margin: 1rem;
+    }
+    mat-card:first-of-type {
+        margin-left: 0rem;
+    }
+    mat-card:last-of-type {
+        margin-right: 0rem;
+    }
+}
