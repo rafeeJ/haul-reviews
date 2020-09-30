@@ -5,15 +5,11 @@
 
   main {
     display: grid;
-    height: 100vh;
+    // height: 100vh;
+    height: 100%;
     grid-template-rows: auto 1fr auto;
   }
-  
-  // etc
-    
-  main {
-    background: coral;
-  }
+
   
   footer {
     padding: 2rem;

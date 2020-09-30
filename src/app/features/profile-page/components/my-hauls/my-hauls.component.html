@@ -1,0 +1,16 @@
+<mat-card id="main" *ngFor="let haul of hauls">
+    <mat-card-header>
+        <mat-card-title> {{ haul.title }} </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div id="product-container">
+            <mat-card *ngFor="let product of haul.productList.slice(0,3)">
+                {{ product.title }}
+            </mat-card>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button [routerLink]="['/haul', haul.uid]">View</button>
+        <button mat-raised-button color="warn" (click)="delete(haul.uid)">Delete</button>
+    </mat-card-actions>
+</mat-card>

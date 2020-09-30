@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../models/user';
+import { User, Profile } from '../models/user';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -42,6 +42,7 @@ export class AuthService {
   private updateUserData(user) {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    const profileRef: AngularFirestoreDocument<Profile> = this.afs.doc(`profiles/${user.uid}`);
 
     const data = { 
       uid: user.uid, 
@@ -49,15 +50,20 @@ export class AuthService {
       displayName: user.displayName, 
       photoURL: user.photoURL
     } 
+    
+    const profileData = { 
+      uid: user.uid,  
+      displayName: user.displayName, 
+      photoURL: user.photoURL,
+      public: false
+    } 
 
+    profileRef.set(profileData, { merge: true})
     return userRef.set(data, { merge: true })
-
   }
 
   async signOut() {
     await this.afAuth.signOut();
     this.router.navigate(['/']);
   }
-
-
 }

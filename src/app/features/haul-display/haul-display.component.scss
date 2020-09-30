@@ -1,0 +1,21 @@
+.container {
+    margin: 1.5rem;
+}
+
+#title-card {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.haul-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0rem;
+    #item {
+        //åflex: 1 0 33%;
+        margin-bottom: 1.5rem;
+    }
+}

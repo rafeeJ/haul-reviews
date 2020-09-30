@@ -1,0 +1,4 @@
+<mat-card>
+    <p>Haul by <b>{{ profile?.displayName }}</b><br>{{ profile?.height }} | {{ profile?.build }}</p>
+    <button mat-mini-fab color="accent" style="background-position: center; background-size: contain;" [ngStyle]="{ 'background-image': 'url(' + profile?.photoURL + ')'}"></button>
+</mat-card>
