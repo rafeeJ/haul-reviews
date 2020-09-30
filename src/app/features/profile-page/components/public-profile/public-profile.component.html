@@ -27,7 +27,7 @@
                 <br>
                 <mat-slide-toggle formControlName="public" checked="profile.public">Public Profile</mat-slide-toggle>
                 <br>
-                <button *ngIf="profileEditor.dirty"> Save changes </button>
+                <button mat-raised-button color="primary" *ngIf="profileEditor.dirty"> Save changes </button>
                 <mat-error *ngIf="profileEditor.dirty">You have made changes! Make sure to save them.</mat-error>
             </form>
         </div>

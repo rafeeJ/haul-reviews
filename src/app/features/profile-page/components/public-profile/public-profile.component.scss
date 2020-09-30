@@ -1,5 +1,6 @@
 img {
     border-radius: 50%;
+    width: 50%;
 }
 
 #container {
@@ -8,4 +9,10 @@ img {
 
 #profile-container {
     display: flex;
+    div:first-of-type {
+        flex: 1;
+    }
+    div:last-of-type {
+        flex: 5;
+    }
 }

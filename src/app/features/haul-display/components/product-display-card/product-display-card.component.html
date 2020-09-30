@@ -18,7 +18,10 @@
             <h6>User Recommended?</h6>
             <p> {{product?.recommend ? 'Yep' : 'Nope'}} </p>
         </div>
-        <p> {{product?.comments}} </p>
+        <div>
+            <h6>Comments</h6>
+            <p> {{product?.comments}} </p>
+        </div>
     </mat-card-content>
     <mat-card-actions>
         <button mat-button (click)="visitProduct()" color="primary">Visit Product</button>

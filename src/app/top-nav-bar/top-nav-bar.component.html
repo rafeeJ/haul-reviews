@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span [routerLink]="['/']">Haul Reviewer</span>
+  <span [routerLink]="['/']">Review my Rep</span>
   <span class="spacer"></span>
   <div *ngIf="auth.user$ | async; then authenticated else guest">
     <!-- template will replace this div -->

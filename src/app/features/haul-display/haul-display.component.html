@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card>
+    <mat-card id="title-card">
         <div style="margin-top: auto; margin-bottom: auto;">
             <h1 style="margin: 0;">{{ haul?.title }}</h1>
         </div>
@@ -8,6 +8,25 @@
         </div>
     </mat-card>
     <div class="haul-container">
-        <app-product-display-card *ngFor="let product of haul?.productList" [product]="product"></app-product-display-card>
+        <mat-card id="item">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- display-haul-card -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0957049115549750"
+                data-ad-slot="8977567703" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </mat-card>
+        <app-product-display-card id="item" *ngFor="let product of haul?.productList" [product]="product">
+        </app-product-display-card>
+        <mat-card id="item">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- display-haul-card -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0957049115549750"
+                data-ad-slot="8977567703" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </mat-card>
     </div>
 </div>

@@ -6,7 +6,7 @@
 <ng-template #guest>
   <div id="container">
     <mat-card>
-      <h1>Welcome to Haul Reviewer!</h1>
+      <h1>Welcome to Review my Rep!</h1>
       <h3>Please sign in to start creating your hauls.</h3>
     </mat-card>
     <br>
@@ -47,35 +47,53 @@
 <!-- User logged in -->
 <ng-template #authenticated>
   <div *ngIf="auth.user$ | async as user">
-    <div id="container">
-      <mat-card>
-        <h1>Welcome to Haul Reviewer!</h1>
-        <h3>Let's get Started!</h3>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" [routerLink]="['/createHaul']">Create a haul</button>
-          <button mat-raised-button color="primary" [routerLink]="['/createHaul']">View my hauls</button>
-        </mat-card-actions>
-      </mat-card>
-      <br>
-      <div id="info-container">
-
+    <div id="container-logged">
+      <div id="main">
         <mat-card>
-          <mat-card-header>
-            <mat-card-title>An Example Haul</mat-card-title>
-            <mat-card-subtitle> Use Haul Reviewer to quickly plan your hauls before you drop the cash.
-            </mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="../../../assets/Haul-2.png" alt="Photo of a Haul">
+          <h1>Welcome back.</h1>
+          <h3>Let's get Started!</h3>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" [routerLink]="['/createHaul']">Create a haul</button>
+            <button mat-raised-button color="primary" [routerLink]="['/myProfile']" fragment="hauls">View my hauls</button>
+          </mat-card-actions>
+        </mat-card>
+        <br>
+        <div id="info-container">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>An Example Haul</mat-card-title>
+              <mat-card-subtitle> Use Haul Reviewer to quickly plan your hauls before you drop the cash.
+              </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/Haul-2.png" alt="Photo of a Haul">
+          </mat-card>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Simple copy and paste</mat-card-title>
+              <mat-card-subtitle>Just copy and paste the item URL from your favourite site, and the product is added!
+              </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/create-haul.png" alt="Photo of a Haul">
+          </mat-card>
+        </div>
+      </div>
+      <div id="right-column">
+        <mat-card>
+            <a style="text-decoration: none" ><h1>WeGoBuy Discount!</h1></a>
+            <p>Sign up to WeGoBuy through the button below and get $40+ in coupons.</p>
+            <mat-card-actions>
+              <a href="https://login.wegobuy.com/en/page/login/?partnercode=wcxdtz&type=register" color="primary" mat-raised-button>Let's go!</a>
+            </mat-card-actions>
         </mat-card>
         <mat-card>
-          <mat-card-header>
-            <mat-card-title>Simple copy and paste</mat-card-title>
-            <mat-card-subtitle>Just copy and paste the item URL from your favourite site, and the product is added!
-            </mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="../../../assets/create-haul.png" alt="Photo of a Haul">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- right-column-ad -->
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0957049115549750"
+            data-ad-slot="6512036520" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </mat-card>
-
       </div>
     </div>
   </div>

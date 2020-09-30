@@ -1,8 +1,8 @@
 .container {
-    margin: 2rem;
+    margin: 1.5rem;
 }
 
-mat-card {
+#title-card {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     display: flex;
@@ -11,20 +11,11 @@ mat-card {
 
 .haul-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-}
-
-app-product-display-card {
-    flex: 1 0 33%;
-    // flex: 1 0 21%;
-    //margin: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-app-product-display-card:nth-child(even) {
-    margin-left: 1.5rem;
-}
-
-app-product-display-card:nth-child(odd) {
-    margin-right: 1.5rem;
+    margin: 0rem;
+    #item {
+        //åflex: 1 0 33%;
+        margin-bottom: 1.5rem;
+    }
 }
