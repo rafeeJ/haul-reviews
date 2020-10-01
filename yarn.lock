@@ -6243,6 +6243,13 @@ ng-image-slider@^2.6.1:
   dependencies:
     tslib "^1.10.0"
 
+ngx-metafrenzy@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-metafrenzy/-/ngx-metafrenzy-5.1.0.tgz#ff307713aa15c447195132b65bea48de9e42a249"
+  integrity sha512-YmxRSZVw9p6Kyap7uMXrmFqxSEQD4pClck6oyxtV85W3EOkBVqyUzogcR3G5jhfrP3kriDfytHMXuKUkK1dn5w==
+  dependencies:
+    tslib "^1.11.1"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
