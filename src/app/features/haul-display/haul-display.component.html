@@ -3,7 +3,7 @@
         <div style="margin-top: auto; margin-bottom: auto;">
             <h1 style="margin: 0;">{{ haul?.title }}</h1>
         </div>
-        <div *ngIf="creatorProfile.public">
+        <div *ngIf="creatorProfile?.public">
             <app-hauler-profile [profile]="creatorProfile"></app-hauler-profile>
         </div>
     </mat-card>
