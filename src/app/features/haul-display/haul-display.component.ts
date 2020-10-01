@@ -32,13 +32,11 @@ export class HaulDisplayComponent implements OnInit {
           console.debug(res.data());
           this.haul = res.data() as Haul
           this.getProfileData(res.data()["owner"])
-          this.title.setTitle(this.haul.title)
-          this.meta.addTags([
-            {property: 'og:title', content: this.haul.title},
-            {property: 'og:url', content: `https://www.reviewmyrep.fashion/haul/${haulID}`},
-            {property: 'og:image', content: `https://media.npr.org/assets/img/2017/09/12/macaca_nigra_self-portrait-3e0070aa19a7fe36e802253048411a38f14a79f8-s800-c85.jpg`},
-            {property: 'og:type', content: 'article'},
-          ])
+          this.title.setTitle(`Review my Rep | ${this.haul.title}`)
+          this.meta.updateTag({property: 'og:title', content: this.haul.title})
+          this.meta.updateTag({property: 'og:url', content: `https://www.reviewmyrep.fashion/haul/${haulID}`})
+          this.meta.updateTag({property: 'og:image', content: `https://media.npr.org/assets/img/2017/09/12/macaca_nigra_self-portrait-3e0070aa19a7fe36e802253048411a38f14a79f8-s800-c85.jpg`})
+          this.meta.updateTag({property: 'og:type', content: 'article'})
         })
       }
     })
@@ -47,7 +45,7 @@ export class HaulDisplayComponent implements OnInit {
   getProfileData(id) {
     this.api.getProfileFromID(id).subscribe(res => {
       this.creatorProfile = res.data() as Profile
-      this.meta.addTag({property: 'og:description', content: `Click to checkout the haul from ${this.creatorProfile.displayName}`})
+      this.meta.updateTag({property: 'og:description', content: `Click to checkout the haul from ${this.creatorProfile.displayName}`})
     })
   }
 
