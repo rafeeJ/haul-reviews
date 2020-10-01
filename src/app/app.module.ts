@@ -41,6 +41,7 @@ import { HaulerProfileComponent } from './features/haul-display/components/haule
 import { MyHaulsComponent } from './features/profile-page/components/my-hauls/my-hauls.component';
 import { PublicProfileComponent } from './features/profile-page/components/public-profile/public-profile.component';
 import { EditDialogComponent } from './features/profile-page/components/my-hauls/edit-dialog/edit-dialog.component';
+import { MetafrenzyModule } from 'ngx-metafrenzy';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuhaMWFpZhM55INDUD_rDRJ0TLNcIfg98",
@@ -91,6 +92,7 @@ const firebaseConfig = {
     MatTabsModule,
     MatDialogModule,
     NgImageSliderModule,
+    MetafrenzyModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
