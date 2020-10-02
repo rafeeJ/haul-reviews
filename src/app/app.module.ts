@@ -72,7 +72,7 @@ const firebaseConfig = {
   ],
   imports: [
     HttpClientModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
