@@ -12,7 +12,9 @@
     "dev:ssr": "ng run haul-reviewer:serve-ssr",
     "serve:ssr": "node dist/haul-reviewer/server/main.js",
     "build:ssr": "ng build --prod && ng run haul-reviewer:server:production",
-    "prerender": "ng run haul-reviewer:prerender"
+    "prerender": "ng run haul-reviewer:prerender",
+    "start:heroku": "node dist/haul-reviewer/server/main.js",
+    "postinstall": "yarn run build:ssr"
   },
   "private": true,
   "dependencies": {
