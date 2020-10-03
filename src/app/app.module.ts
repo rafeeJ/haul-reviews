@@ -31,6 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
@@ -92,6 +93,7 @@ const firebaseConfig = {
     MatTabsModule,
     MatDialogModule,
     NgImageSliderModule,
+    ScrollingModule,
     MetafrenzyModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
