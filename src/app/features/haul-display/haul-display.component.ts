@@ -25,7 +25,7 @@ export class HaulDisplayComponent implements OnInit {
       let haulID = params.get("haulId")
       if(params.get("haulId")) {
         this.api.getHaulfromID(haulID).subscribe(res => {
-          console.debug(res.data());
+          //console.debug(res.data());
           this.haul = res.data() as Haul
           this.getProfileData(res.data()["owner"])
           this.meta.setMetaTag('og:title', this.haul.title)
