@@ -31,6 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { ProfilePageComponent } from './features/profile-page/profile-page.component';
 import { HaulCreatorComponent } from './features/haul-creator/haul-creator.component';
@@ -91,6 +92,7 @@ const firebaseConfig = {
     MatMenuModule,
     MatTabsModule,
     MatDialogModule,
+    MatSnackBarModule,
     NgImageSliderModule,
     MetafrenzyModule.forRoot(),
     FormsModule,

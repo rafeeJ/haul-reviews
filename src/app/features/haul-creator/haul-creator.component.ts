@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 import * as faker from 'faker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-haul-creator',
@@ -19,7 +20,8 @@ export class HaulCreatorComponent implements OnInit {
   constructor(private api: ApiService,
     private hauls: HaulCreatorService,
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   public products: Array<ProductListItem> = [];
   private user: User;
@@ -53,14 +55,22 @@ export class HaulCreatorComponent implements OnInit {
                   if(response === "rip") {
                     return false;
                   } else {
-                    this.products.push(response as Product)
+                    let product = response as Product
+                    this.products.push(product)
+                    this._snackBar.open(`Added ${product.title} successfully`, "Ok", {
+                      duration: 2000,
+                    });
                     this.hauls.createProduct(response)
                   }
                 })
               // Otherwise, return it from the Database. 
               } else {
                 //console.debug("Getting from DB")
-                this.products.push(res.docs[0].data() as Product)
+                let product = res.docs[0].data() as Product
+                this.products.push(product)
+                this._snackBar.open(`Added ${product.title} successfully`, "Ok", {
+                  duration: 2000,
+                });
               }
           });
       }
