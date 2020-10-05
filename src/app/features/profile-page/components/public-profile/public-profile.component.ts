@@ -28,13 +28,13 @@ export class PublicProfileComponent implements OnInit {
         this.api.getProfileFromID(res.uid)
           .subscribe(res => {
             this.profile = res.data() as Profile
-            console.debug(this.profile);
+            //console.debug(this.profile);
         })
       })
   }
 
   makeChanges() {
-    console.debug(this.profileEditor.value);
+    //console.debug(this.profileEditor.value);
     this.api.updateProfileData(this.profile.uid, this.profileEditor.value)
   }
 

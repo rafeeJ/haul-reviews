@@ -96,7 +96,7 @@ app.get('/api/url/weidian/:id', function (req, res) {
 
       // Get the title
       let title = $('.item-name', '.content-str').text()//.trim()
-      console.log(title);
+      //console.log(title);
       result["title"] = title
       
       res.send(result)

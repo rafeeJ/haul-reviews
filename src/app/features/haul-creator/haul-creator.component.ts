@@ -59,7 +59,7 @@ export class HaulCreatorComponent implements OnInit {
                 })
               // Otherwise, return it from the Database. 
               } else {
-                console.debug("Getting from DB")
+                //console.debug("Getting from DB")
                 this.products.push(res.docs[0].data() as Product)
               }
           });
@@ -85,20 +85,20 @@ export class HaulCreatorComponent implements OnInit {
         var formData = product.onSubmit()
         haulItems.push(formData)
       }
-      
-      if(!this.hasError) {
-        let data = {}
-        data["title"] = haulName || `${faker.hacker.adjective()} ${faker.hacker.adjective()} ${faker.hacker.noun()}`
-        data["productList"] = haulItems
-        data["owner"] = this.user.uid
-        
-        this.hauls.createHaul(data)
-          .then(res => {
-            console.log(res.id);
-            this.router.navigate([`/haul/${res.id}`])
-          })
-        }
     }
+
+    if(!this.hasError) {
+      let data = {}
+      data["title"] = haulName || `${faker.hacker.adjective()} ${faker.hacker.adjective()} ${faker.hacker.noun()}`
+      data["productList"] = haulItems
+      data["owner"] = this.user.uid
+      
+      this.hauls.createHaul(data)
+        .then(res => {
+          //console.log(res.id);
+          this.router.navigate([`/haul/${res.id}`])
+        })
+      }
   }
 
   ngOnInit(): void {
