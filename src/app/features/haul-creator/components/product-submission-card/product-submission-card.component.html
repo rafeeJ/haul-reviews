@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="!deleted">
     <!-- Only display form when the user has entered a valid URL -->
     <div *ngIf="product">
         <h1 (click)="minimised = !minimised">{{product?.title}}</h1>
@@ -64,4 +64,7 @@
             </form>
         </div>
     </div>
+    <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="deleteItem()">Delete</button>
+      </mat-card-actions>
 </mat-card>

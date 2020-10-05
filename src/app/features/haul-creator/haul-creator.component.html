@@ -7,8 +7,8 @@
         </mat-form-field>
     </div>
 
-    <h1>Add your Garms</h1>
-    <p>Paste the TaoBao URL of a product in below</p>
+    <h1>Add your Products</h1>
+    <p>Paste the product URL of a product in below</p>
     <mat-card>
         <form [formGroup]="urlSubmitter" (ngSubmit)="validateURL()">
             <mat-form-field style="width: 80%;" floatLabel="never" class="submit-url">
@@ -24,10 +24,10 @@
     </mat-card>
     <mat-divider></mat-divider>
     <div>
-        <app-product-submission-card #productCard *ngFor="let productListItem of products" [product]="productListItem"></app-product-submission-card>
+        <app-product-submission-card #productCard *ngFor="let productListItem of products.slice().reverse(); let i = index" [i]="i" [product]="productListItem" (index)="deleteItem($event)"></app-product-submission-card>
     </div>
     <div>
         <mat-error *ngIf="hasError">Please make sure everything is valid</mat-error>
-        <button *ngIf="products.length!=0" mat-raised-button color="primary" (click)="submitHaul(haulName.value)">Submit Haul</button>
+        <button *ngIf="products.length > deleted.length" mat-raised-button color="primary" (click)="submitHaul(haulName.value)">Submit Haul</button>
     </div>
 </div>
