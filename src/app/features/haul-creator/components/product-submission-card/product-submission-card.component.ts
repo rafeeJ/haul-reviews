@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Product, ProductListItem, ProductSubmission } from 'src/app/models/product';
@@ -15,9 +15,13 @@ export class ProductSubmissionCardComponent implements OnInit {
   constructor(private api: ApiService, private sneaker: HaulCreatorService) { }
 
   @Input() product: Product;
+  @Input() i: number;
+  @Output() index = new EventEmitter<number>();
 
   public inHand = false;
   public hasError = false;
+  public deleted: boolean = false;
+
 
   productForm = new FormGroup({
     productSize: new FormControl(''),
@@ -33,6 +37,11 @@ export class ProductSubmissionCardComponent implements OnInit {
   public minimised: boolean = false;
 
   ngOnInit(): void {
+  }
+
+  deleteItem() {
+    this.deleted = true;
+    this.index.emit(this.i)
   }
 
   onSubmit() {
